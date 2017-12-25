@@ -1,0 +1,75 @@
+
+<div xmlns:s="http://www.springframework.org/tags" xmlns:jsp="http://java.sun.com/JSP/Page" 
+xmlns:c="http://java.sun.com/jsp/jstl/core"
+version="2.0">
+<jsp:directive.page contentType="text/html;charset=UTF-8" />
+<jsp:output omit-xml-declaration="yes" />
+	<s:message var="app_name" code="application_name" htmlEscape="false" />
+	<s:message var="title" code="welcome_titlepane" arguments="${app_name}" htmlEscape="false" />
+<div class="warper">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+              <div class="panel panel-default">
+                <div class="panel-heading clean">
+                  <h3 class="text-center">관리자 페이지 로그인</h3>
+                </div>
+                <div class="panel-body">
+                  <hr class="clean" />
+                  <c:url value="/login" var="login"></c:url>
+                  <form role="form" action="${login}" method="post">
+                    <div class="form-group input-group"><span class="input-group-addon"><i class="fa fa-user"><jsp:text /></i></span>
+                      <input type="text" placeholder="아이디" class="form-control" name="username" value="${username }"/>
+                    </div>
+                    <div class="form-group input-group"><span class="input-group-addon"><i class="fa fa-key"><jsp:text /></i></span>
+                      <input type="password" placeholder="비밀번호" class="form-control" name="password" value="${password }"/>
+                    </div>
+                    <div class="form-group" style="text-align:center">
+                     <label class="cr-styled">
+                        <input type="checkbox" ng-model="todo.done" name="remember"/><i class="fa"><jsp:text /></i>
+                      </label>    아이디 저장        
+                    </div>
+                    <button type="submit" class="btn btn-info btn-block">로그인</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Work Here-->
+      </div>
+      
+    <c:if test="${err == 'nouser'}">
+  		<c:remove var="err"/>
+            <div id="popupInputAllRequiredThings" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false" class="modal fade">
+			      <div class="modal-dialog">
+			        <div class="modal-content">
+			          <div role="alert" class="alert alert-danger alert-dismissible">
+			            <span>아이디와 비밀번호를 다시 확인해주십시오</span>
+			            <!-- input all required things-->
+			            <div style="text-align:center">
+            			<button type="button" data-dismiss="modal" onclick="Clear()" class="pr-btn vibrant center">확인</button>
+			            </div>
+			          </div>
+			
+			        </div>
+			      </div>
+			    </div>
+			    <script>
+
+			    	setTimeout(function(){
+			    		$('#popupInputAllRequiredThings').modal('show');
+			    	}, 200);
+			    	function Clear()
+			    	{
+
+			    	   document.getElementById("password").value= "";
+                        document.getElementById("username").value = '${username_history}';
+
+			    	}
+		    	</script>
+		    	
+		</c:if>
+      
+</div>
+

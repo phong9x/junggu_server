@@ -1,0 +1,177 @@
+<html xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:tiles="http://tiles.apache.org/tags-tiles"
+	xmlns:spring="http://www.springframework.org/tags">
+<jsp:output doctype-root-element="HTML" doctype-system="about:legacy-compat" />
+<jsp:directive.page contentType="text/html;charset=UTF-8" />
+<jsp:directive.page pageEncoding="UTF-8" />
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="cache-control" content="no-cache" />
+
+	<!-- Get the user locale from the page context (it was set by Spring MVC's locale resolver) -->
+	<c:set var="plocale">${pageContext.response.locale}</c:set>
+	<c:set var="userLocale">
+		<c:out value="${fn:replace(plocale, '_', '-')}" default="en" />
+	</c:set>
+
+	<spring:message code="application_name" var="app_name" htmlEscape="false" />
+	<spring:message code="menu.store" var="menu_store" htmlEscape="false" />
+	<spring:message code="menu.report" var="menu_report" htmlEscape="false" />
+	<spring:message code="menu.intro" var="menu_intro" htmlEscape="false" />
+	<spring:message code="menu.member" var="menu_member" htmlEscape="false" />
+	<spring:message code="menu.notice" var="menu_notice" htmlEscape="false" />
+	<spring:message code="menu.logout" var="menu_logout" htmlEscape="false" />
+	<spring:message code="menu.category" var="menu_category" htmlEscape="false" />
+	<spring:message code="menu.field" var="menu_field" htmlEscape="false" />
+	<spring:message code="menu.facility" var="menu_facility" htmlEscape="false" />
+	<title><c:out value="${app_name}" /></title>
+
+	<!-- style -->
+	<spring:url value="/theme" var="theme" />
+	<link rel="stylesheet" href="${theme}/libs/brio-admin/css/bootstrap/bootstrap.css" />
+    <!-- Bootstrap date picker-->
+    <link rel="stylesheet" href="${theme}/libs/brio-admin/css/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.css" />
+    <!-- Chosen-->
+    <link rel="stylesheet" href="${theme}/libs/brio-admin/css/plugins/bootstrap-validator/bootstrap-validator.css" />
+    
+    <link rel="stylesheet" href="${theme}/libs/brio-admin/css/plugins/bootstrap-chosen/chosen.css" />
+    <!-- Tags input-->
+    <link rel="stylesheet" href="${theme}/libs/brio-admin/css/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" />
+    <!-- Switch-->
+    <link rel="stylesheet" href="${theme}/libs/brio-admin/css/switch-buttons/switch-buttons.css" />
+    <!-- Base Styling-->
+    <link rel="stylesheet" href="${theme}/libs/brio-admin/css/app/app.v1.css" />
+    <link rel="stylesheet" href="${theme}/assets/css/admin.css" />
+    <link rel="stylesheet" href="${theme}/assets/css/style.css" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file://-->
+    <!--if lt IE 9
+    script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+    script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+    -->
+    <script src="https://maps.googleapis.com/maps/api/js"><jsp:text/></script>
+ 	<c:url value="/" var="root"></c:url>
+ 	<spring:url value="/" var="root_url" />
+ 	<script>
+		var root_url = "${root_url}";
+		var api = "${api}";
+    </script>
+</head>
+  <body>
+    <!-- Preloader-->
+    <div class="loading-container">
+      <div class="loading">
+        <div class="l1">
+          <div><jsp:text /></div>
+        </div>
+        <div class="l2">
+          <div><jsp:text /></div>
+        </div>
+        <div class="l3">
+          <div><jsp:text /></div>
+        </div>
+        <div class="l4">
+          <div><jsp:text /></div>
+        </div>
+      </div>
+    </div>
+    <!-- Preloader-->
+    <section>
+      <header class="top-head">
+        <div class="container">
+          <div class="pull-left"><a href="#"><img src="${theme}/assets/images/dumb_logo.png" alt="" class="wl-logo" /></a></div>
+          <nav role="navigation" class="navbar-default">
+            <ul class="nav navbar-nav">
+            <c:if test="${activePage=='store'}">
+            	<li><a class="active" href="${root}store/list"><c:out value="${menu_store}" /></a></li>
+            </c:if>
+            <c:if test="${activePage!='store'}">
+            	<li><a href="${root}store/list"><c:out value="${menu_store}" /></a></li>
+            </c:if>
+            <c:if test="${activePage=='report'}">
+            	<li><a class="active" href="${root}report/list"><c:out value="${menu_report}" /></a></li>
+            </c:if>
+            <c:if test="${activePage!='report'}">
+            	<li><a href="${root}report/list"><c:out value="${menu_report}" /></a></li>
+            </c:if>
+            <c:if test="${activePage=='intro'}">
+            	<li><a class="active" href="${root}intro"><c:out value="${menu_intro}" /></a></li>
+            </c:if>
+            <c:if test="${activePage!='intro'}">
+            	<li><a href="${root}intro"><c:out value="${menu_intro}" /></a></li>
+            </c:if>
+            <c:if test="${activePage=='member'}">
+            	<li><a class="active" href="${root}member/list"><c:out value="${menu_member}" /></a></li>
+            </c:if>
+            <c:if test="${activePage!='member'}">
+            	<li><a href="${root}member/list"><c:out value="${menu_member}" /></a></li>
+            </c:if>
+            <c:if test="${activePage=='notice'}">
+            	<li><a class="active" href="${root}notice/list"><c:out value="${menu_notice}" /></a></li>
+            </c:if>
+            <c:if test="${activePage!='notice'}">
+            	<li><a href="${root}notice/list"><c:out value="${menu_notice}" /></a></li>
+            </c:if>
+            
+            <c:if test="${activePage=='category'}">
+            	<li><a class="active" href="${root}category/list"><c:out value="${menu_category}" /></a></li>
+            </c:if>
+            <c:if test="${activePage!='category'}">
+            	<li><a href="${root}category/list"><c:out value="${menu_category}" /></a></li>
+            </c:if>
+            
+            <c:if test="${activePage=='field'}">
+            	<li><a class="active" href="${root}field/list"><c:out value="${menu_field}" /></a></li>
+            </c:if>
+            <c:if test="${activePage!='field'}">
+            	<li><a href="${root}field/list"><c:out value="${menu_field}" /></a></li>
+            </c:if>
+            
+            <c:if test="${activePage=='facility'}">
+            	<li><a class="active" href="${root}facility/list"><c:out value="${menu_facility}" /></a></li>
+            </c:if>
+            <c:if test="${activePage!='facility'}">
+            	<li><a href="${root}facility/list"><c:out value="${menu_facility}" /></a></li>
+            </c:if>
+            
+            <li><a href="${root}logout"><c:out value="${menu_logout}" /></a></li>
+            
+            </ul>
+          </nav>
+        </div>
+      </header>
+	<tiles:insertAttribute name="body" />
+	 <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-3">Copyright © 2015 <a href="http://www.jgcil.kr/main/main_new.html" target="_blank">JungGu</a></div>
+            <p class="col-sm-9"><small>
+               <br/>
+               <br/>
+               <br/></small></p>
+          </div>
+        </div>
+      </footer>
+    </section>
+    
+    <script src="${theme}/libs/brio-admin/js/jquery/jquery-1.9.1.min.js" type="text/javascript"><jsp:text /></script>
+    <script src="${theme}/libs/brio-admin/js/plugins/underscore/underscore-min.js"><jsp:text /></script>    
+    <script src="${theme}/libs/brio-admin/js/bootstrap/bootstrap.min.js"><jsp:text /></script>    
+    <script src="${theme}/libs/brio-admin/js/globalize/globalize.min.js"><jsp:text /></script>    
+    <script src="${theme}/libs/brio-admin/js/plugins/bootstrap-chosen/chosen.jquery.js"><jsp:text /></script>   
+    <script src="${theme}/libs/brio-admin/js/plugins/bootstrap-validator/bootstrap-validator.js"><jsp:text /></script>    
+    <script src="${theme}/libs/brio-admin/js/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"><jsp:text /></script>    
+    <script src="${theme}/libs/brio-admin/js/moment/moment.js"><jsp:text /></script>    
+    <script src="${theme}/libs/brio-admin/js/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.js"><jsp:text /></script>
+    <script src="${theme}/libs/brio-admin/js/plugins/nicescroll/jquery.nicescroll.min.js"><jsp:text /></script>   
+    <script src="${theme}/libs/trams-frontend/js/utils.js" type="text/javascript"><jsp:text /></script>    
+    <script src="${theme}/libs/brio-admin/js/app/custom.js" type="text/javascript"><jsp:text /></script>  
+    <script src="${theme}/assets/js/admin.js" type="text/javascript"><jsp:text /></script>
+    <script src="${theme}/assets/js/store.js" type="text/javascript"><jsp:text /></script>
+    <script src="${theme}/assets/js/intro.js" type="text/javascript"><jsp:text /></script>
+    
+  </body>
+</html>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+	<definition name="default" template="/WEB-INF/layouts/default.jspx">
+	</definition>
+	<definition name="loginpage" template="/WEB-INF/layouts/login.jspx">
+	</definition>
+	<definition name="mobile" template="/WEB-INF/layouts/mobile_intro.jspx">
+	</definition>
+</tiles-definitions>

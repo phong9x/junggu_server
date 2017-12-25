@@ -1,0 +1,1 @@
+Select * From UserEntity u Where u.username = 'admin' and u.password = '111' and u.role = 1

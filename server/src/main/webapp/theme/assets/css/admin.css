@@ -1,0 +1,77 @@
+/* --------------------------------------------------------------------- */
+/* Common Styling
+/* --------------------------------------------------------------------- */
+/*FONT*/
+@font-face {
+  font-family: 'NanumBarunGothic';
+  src: url('../fonts/nanum/NanumBarunGothic.eot');
+  src: url('../fonts/nanum/NanumBarunGothic.woff') format('woff'), url('../fonts/nanum/NanumBarunGothic.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'NanumGothic';
+  src: url('../fonts/nanum/NanumGothic.eot');
+  src: url('../fonts/nanum/NanumGothic.woff') format('woff'), url('../fonts/nanum/NanumGothic.ttf') format('truetype');
+}
+body {
+  font-family: "NanumGothic";
+}
+a:hover,
+a:active {
+  color: #43afd3;
+}
+a.mute {
+  color: #444;
+}
+a.mute:hover,
+a.mute:active {
+  color: #444;
+}
+.inline-input-holder {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 8px;
+}
+/* --------------------------------------------------------------------- */
+/* Alter bootstrap
+/* --------------------------------------------------------------------- */
+@media (min-width: 768px) {
+  .form-horizontal .control-label {
+    text-align: left;
+  }
+  .width-md-140 {
+    width: 140px;
+  }
+}
+/* --------------------------------------------------------------------- */
+/* Tweak top header
+/* --------------------------------------------------------------------- */
+.top-head nav.navbar-default {
+  font-size: 18px;
+}
+.top-head nav.navbar-default .nav {
+  margin-left: 30px;
+}
+.top-head nav.navbar-default a.active {
+  font-weight: bold;
+  color: #43afd3;
+}
+.top-head nav.navbar-default a:hover {
+  color: #43afd3;
+}
+/* --------------------------------------------------------------------- */
+/* image input
+/* --------------------------------------------------------------------- */
+.jg-img-input {
+  margin-bottom: 20px;
+}
+.jg-img-input-img {
+  margin-bottom: 10px;
+}
+.jg-title {
+  padding: 15px 10px;
+  background-color: #ECECEC;
+  border-top: 1px solid #5BC0DE;
+}
+.jg-pad {
+  padding: 10px 10px 30px 10px;
+}
